@@ -31,8 +31,8 @@
                 oneiromancyList: []
             }
         },
-        methods:{
-            showDetail(id){
+        methods: {
+            showDetail(id) {
 
             }
         },
@@ -56,6 +56,11 @@
         width: 100%;
     }
 
+    .oneiromancy {
+        background: url("images/otherBcg.png");
+        background-size: 100% 100%;
+    }
+
     .oneiromancyList > a {
         display: block;
         width: 100px;
@@ -66,11 +71,13 @@
         float: left;
         margin: 10px 10px;
     }
-    .detail{
+
+    .detail {
         width: 80%;
         margin-left: 10px;
     }
-    .star{
+
+    .star {
         font-family: "iconfont";
         color: orange;
         margin-right: 10px;

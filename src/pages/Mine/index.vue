@@ -5,7 +5,7 @@
                      is-link
                      class="userHeader">
                 <span class="username">请登录</span>
-                <img slot="icon" src=" " width="80" height="80">
+                <img slot="icon" src="../Video/images/head.jpg" width="80" height="80">
             </mt-cell>
         </router-link>
         <mt-cell
@@ -45,7 +45,11 @@
 
 <style>
     .mine{
+        width: 100%;
+        height: 80vh;
         margin-top: 60px;
+        background: url("../Home/images/homeBcg.jpg");
+        background-size: 100% 100% ;
     }
     .userHeader img {
         border-radius: 50%;
@@ -56,5 +60,7 @@
     .mint-cell{
         font-size: 30px !important;
         font-weight: bold;
+        background: rgba(255,255,255,0.6);
+        border-top: 1px solid white;
     }
 </style>

@@ -27,9 +27,10 @@
 
 <style>
     .login {
-        width: 100vw;
+        height: 81.9vh;
         text-align: center;
         z-index: 100;
+        overflow: hidden;
     }
 
     .mint-header {

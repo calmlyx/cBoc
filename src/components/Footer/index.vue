@@ -8,7 +8,7 @@
                 </span>
             </li>
             <li :class="{on : '/video' === $route.path}" @click="goTo('/video')">
-                <i class="footerIco">&#xe638;</i>
+                <i class="footerIco">&#xe608;</i>
             </li>
             <li :class="{on : '/text' === $route.path}" @click="goTo('/text')">
                 <i class="footerIco">&#xe600;</i>
@@ -38,7 +38,8 @@
         color: gray;
         position: fixed;
         bottom: 0;
-        background: white;
+        background: url("images/footerBcg.jpeg");
+        background-size: 100% 100%;
     }
 
     hr {

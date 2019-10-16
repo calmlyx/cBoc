@@ -40,7 +40,8 @@
 
 <style>
     .textTemplate {
-        background: #d8d8d6;
+        background: url("../Home/images/homeBcg.jpg");
+        background-size: 100% 100% ;
     }
 
     .is-right{
@@ -49,7 +50,7 @@
         margin-right: 20px;
     }
     .TextRow {
-        background: #fff;
+        background: rgba(255,255,255,0.6);
         margin: 10px 0;
         line-height: 30px;
     }

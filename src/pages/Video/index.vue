@@ -1,23 +1,28 @@
 <template>
-    <div class="videoTemplate">
-        <div class="container" v-for="item in videoList" :key="item.id">
-            <div class="row videoRow">
-                <header>
-                    <p>
-                        <img :src="item.header" alt="deng" width="50">
-                    </p>
-                    <p>{{item.username}}</p>
-                </header>
-                <p style="margin: 5px 0;">{{item.text}}</p>
-                <main>
-                    <video :src="item.video"  controls="controls"></video>
-                </main>
-                <footer>
-                    <i class="VupAndDown">&#xe602;<span>{{item.up}}</span></i>
-                    <i class="VupAndDown">&#xe601;<span>{{item.down}}</span></i>
-                    <i class="VupAndDown">&#xe67d;<span>{{item.comment}}</span></i>
-                    <i class="VupAndDown">&#xe683;</i>
-                </footer>
+    <div class="MusicTemplate">
+        <!--https://api.apiopen.top/searchMusic?name=aini-->
+        <div class="MusicSearch">
+            <div class="controlSearch">
+                <input type="text" name="music" id="music" value="" placeholder="请输入歌名">
+                <p @click="goSearch()" class="searchIco">&#xe82a;</p>
+            </div>
+        </div>
+        <div class="musicList">
+            <div class="musicSon">
+                <div class="musicDetail" v-for="item in musicList" :key="item.songid">
+                    <div class="musicDetailSon">
+                        <div class="img">
+                            <img :src="item.pic" alt="" width="50">
+                        </div>
+                        <div class="musicR">
+                            <h4>{{item.title}}</h4>
+                            <p class="author">{{item.author}}</p>
+                        </div>
+                    </div>
+                    <audio :src="item.url" controls="controls">
+                        您的浏览器不支持 audio 标签。
+                    </audio>
+                </div>
             </div>
         </div>
     </div>
@@ -26,85 +31,118 @@
 <script>
     export default {
         name: "Video",
-        data(){
-            return{
-                videoList:[]
+        data() {
+            return {
+                musicList: [],
             }
         },
-        mounted(){
-            this.axios.get("https://www.apiopen.top/satinGodApi?type=1&page=1").then((res)=>{
-                var code = res.data.code
-                if(code === 200){
-                    this.videoList = res.data.data;
-                }else {
-                    alert("消息已丢失，请联系官方！！")
-                }
-            })
+        methods: {
+            goSearch() {
+                var val = document.getElementById("music").value;
+                console.log(val);
+                this.axios.get("https://api.apiopen.top/searchMusic?name=" + val).then((res) => {
+                    var code = res.data.code;
+                    if (code === 200) {
+                        this.musicList = res.data.result;
+                        console.log(res.data.result)
+                    } else {
+                        alert("消息已丢失，请联系官方！！")
+                    }
+                })
+            }
         },
     }
 </script>
 
 <style>
-    .VupAndDown{
-        font-family: "iconfont" !important;
-        font-size: 25px;
-        font-style: normal;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-    .videoTemplate{
-        background: #d8d8d6;
-    }
-    .videoRow{
+    .MusicTemplate {
         width: 100%;
-        /*height: 305px;*/
+        height: 80vh;
+        background: url("../Home/images/homeBcg.jpg");
+        background-size: 100% 100%;
+        margin-bottom: 30px;
+    }
+
+    .MusicSearch {
+        width: 100%;
+        height: 80px;
         background: white;
-        margin: 20px 0;
+        position: fixed;
+        z-index: 100;
     }
-    .videoRow>header{
+
+    .controlSearch {
         width: 100%;
-        height: 70px;
-        position: relative;
-    }
-    .videoRow>header>p{
+        display: flex;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
+
     }
-    .videoRow>header>p:first-of-type{
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        left: 5%;
-        background-size: 100% 100%;
-    }
-    .videoRow>header>p:last-of-type{
-        width: 180px;
-        height: 50px;
-        left: 22%;
-        line-height: 50px;
-    }
-    .videoRow>main{
-        width: 100%;
-        height: 175px;
-        background: black;
-    }
-    .videoRow>main>video{
-        width: 100%;
-        height: 100%;
-    }
-    .videoRow>footer{
-        width: 100%;
-        height: 45px;
-    }
-    .videoRow>footer>i{
-        line-height: 70px;
-        margin-right: 50px;
-    }
-    .videoRow>footer span{
+
+    .controlSearch > input {
+        flex: 8;
+        height: 35px;
+        border: 1px solid;
+        border-right: none;
+        box-sizing: border-box;
+        text-indent: 10px;
         font-size: 15px;
+        outline: none;
+        background: white;
     }
-    .videoRow:last-of-type{
-        margin-bottom: 80px;
+
+    .controlSearch > p {
+        flex: 2;
+        width: 100px;
+        margin: 0 auto;
+        height: 35px;
+        border-radius: 0;
+        font-size: 15px;
+        background: deepskyblue;
+        text-align: center;
+        line-height: 35px;
+    }
+
+    .musicSon {
+        margin: 20px 0;
+    }
+
+    .musicList {
+        padding: 10px;
+        margin-top: 50px;
+
+    }
+
+    .musicDetail {
+        margin: 25px 0;
+        background: #f1f3f4;
+    }
+
+    .musicDetailSon {
+        display: flex;
+    }
+
+    .musicDetailSon > .img {
+        flex: 3;
+        text-align: center;
+    }
+
+    .musicDetailSon > .musicR {
+        flex: 7;
+    }
+
+    .musicR > h4, p {
+        margin-left: 10px;
+    }
+
+    audio {
+        width: 100%;
+        height: 20px;
+    }
+
+    .searchIco {
+        font-family: "iconfont" !important;
+        color: white;
     }
 </style>

@@ -27,6 +27,11 @@
 </script>
 
 <style>
+    .switch{
+        height: 80vh;
+        background: url("../Oneiromancy/images/otherBcg.png");
+        background-size: 100% 100%;
+    }
     .switchAll{
         margin: 100px auto;
         position: relative;

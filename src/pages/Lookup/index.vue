@@ -12,7 +12,7 @@
             </form>
             <div class="searchResult">
                 <table>
-                    <tr >
+                    <tr>
                         <th colspan="2" class="tableHead">查询结果</th>
                     </tr>
                     <tr>
@@ -47,6 +47,11 @@
 </script>
 
 <style>
+    .lookup{
+        height: 80vh;
+        background: url("../Oneiromancy/images/otherBcg.png");
+        background-size: 100% 100%;
+    }
     .lookupMain {
         text-align: center;
     }
@@ -78,27 +83,30 @@
         color: white;
     }
 
-    table {
+    .searchResult table {
         text-align: center;
         width: 335px;
-        border-collapse: collapse;
         margin: 30px auto;
     }
-.tableHead{
-    background: skyblue;
-    color: white;
-    font-size: 16px;
-    letter-spacing: 10px;
-}
-    table, td, th {
+
+    .tableHead {
+        background: skyblue;
+        color: white;
+        font-size: 16px;
+        letter-spacing: 10px;
+    }
+
+    .searchResult > table{
         border: 1px solid skyblue;
     }
-    td, th{
+
+    td, th {
         font-size: 12px;
         height: 40px;
-        color: gray;
+        border: 1px solid skyblue;
     }
-    th{
+
+    th {
         width: 100px;
     }
 
